@@ -13,10 +13,19 @@ reddit = praw.Reddit(
 
 subreddit = reddit.subreddit("nosleep")
 
+indexPage = ""
+remainingPages = ""
+idx = 1
+
 with open("dummy.txt", "w") as fo:
     fo.write("% " + BOOK_TITLE + "\n")
     fo.write("% " + WRITER_NAME + "\n")
     for submission in subreddit.top(time_filter="month"):
-        print(submission.title)
-        fo.write("# " + submission.title + "\n")
-        fo.write(submission.selftext+"\n\n")
+        indexPage += str(idx) + ". [" + submission.title + "]" + "(#" + str(idx) + ")\n"
+        remainingPages += "<a name=" + str(idx) + "></a>\n\n"
+        remainingPages += "## " + submission.title + "\n\n"
+        remainingPages += submission.selftext + "\n\n"
+        idx += 1
+
+    fo.write(indexPage + "\n")
+    fo.write(remainingPages)
