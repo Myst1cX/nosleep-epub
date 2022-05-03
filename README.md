@@ -15,4 +15,4 @@ Best suited for subreddits with text-based content where each post can be read o
 
 ![book index page](./screenshots/index.png)
 
-![book content](./screenshots/book_content.png)
+![book content](./screenshots/book_chapter.png)
